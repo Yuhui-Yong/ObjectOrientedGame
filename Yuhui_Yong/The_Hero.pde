@@ -9,7 +9,9 @@ class Hero1{ // This is the MainHero
   }
   
   void display() {
-    translate(width/2, 648); // This is like Relative coordinates and make everything to be stick together
+    pushMatrix(); // I don't think I have to use this for my game since there is no such things that push things out, but just in case.
+    // For making only the Hero move, if I don't use it not only the Hero but everything will be moving because they are also influnced by translate.
+    translate(X, Y); // This is like Relative coordinates and make everything to be stick together
     rectMode(CENTER); // To place things in the center
     noStroke(); // noStroke
     fill(255, 203, 147); // Skin color
@@ -30,5 +32,6 @@ class Hero1{ // This is the MainHero
     fill(255, 203, 147); // Skin color
     rect(-17, 56, 7, 6); // Left hand
     rect(17, 56, 7, 6); // Right hand
+    popMatrix(); // End Matrix
   }
 }

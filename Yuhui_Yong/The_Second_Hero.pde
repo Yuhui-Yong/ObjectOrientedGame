@@ -1,7 +1,7 @@
 class Hero2{
   
   void display() {
-    translate(width/2, 648); // This is like Relative coordinates and make everything to be stick together
+    translate(X, Y); // This is like Relative coordinates and make everything to be stick together
     rectMode(CENTER); // To place things in the center
     noStroke(); // noStroke
     fill(255, 203, 147); // Skin color

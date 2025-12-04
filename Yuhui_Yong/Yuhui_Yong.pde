@@ -5,6 +5,9 @@ boolean button1 = false; // This is for hero2 to appear and for hero2 to disappe
 float hero2Time = 1; // This is like the time how long the hero2 will appear. Like frame.
 boolean button2 = false; // The same process as the hero2.
 float hero3Time = 1; // The same process as the hero2.
+// Now, I wanted players to have a cooldown so that they cannot be pressing quickly.
+float dCooldown = 0; // This is for dcooldown.
+float aCooldown = 0; // This is for acooldown.
 PImage photo;
 PImage photo1;
 PImage photo2;
@@ -42,6 +45,8 @@ void draw(){
     hero2Time = hero2Time - 1; // This is how long it will be deleting so that hero2 will be able to disspaer afterwards.
     if(hero2Time <= 0){ // This is when heroTIme gets to zero, it will dissapear.
     button1 = false; // like this, the button will be changed it as false, so hero2 will disappear.
+    if(dCooldown > 0) // Here, if acooldown is bigger than 0,
+      dCooldown = dCooldown - 1; // it will reduce, and the amount of frame I wanna have it for total, I will have to decide below in the keyPress section.
     }
   }
   
@@ -50,6 +55,8 @@ void draw(){
     hero3Time = hero3Time - 1; // The same as the hero2.
     if(hero3Time <= 0){ // The same as the hero2.
     button2 = false; // The same as the hero2.
+    if(aCooldown > 0) // The same process as the hero2.
+      aCooldown = aCooldown - 1; // The same process as the hero2.
     }
   }
   
@@ -69,16 +76,24 @@ void draw(){
       
     if(keyPressed){
       if(key == 'd'){
-        button1 = true;
-        hero2Time = 150; // This is the total amout of time that will appear on the screen, it is 2.5 secs.
+        if(dCooldown == 0){ // Here, if dCooldown reaches at 0,
+          button1 = true; // hero2 will appear but,
+          button2 = false; // hero3 will not appear so that it cannot be together. It's clean.
+        hero2Time = 80; // This is the total amout of time that will appear on the screen, it is 2.5 secs.
+        dCooldown = 160; // Ths total amout of the fram for acooldown.
       }
+    }
     }
       
     if(keyPressed){
       if(key == 'a'){
-        button2 = true;
-        hero3Time = 150; // The same process as the hero2.
+        if(aCooldown == 0){ // The same process as the hero2.
+          button2= true; // The same process as the hero2.
+          button1 = false; // Ths same process as the hero2.
+        hero3Time = 80; // The same process as the hero2.
+        aCooldown = 160; // The same process as the hero2.
       }
     }
   }
+}
 }

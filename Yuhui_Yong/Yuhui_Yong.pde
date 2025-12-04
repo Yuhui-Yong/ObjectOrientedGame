@@ -3,8 +3,8 @@ Hero2 hero2; // declare variable.
 Hero3 hero3; // declare variable.
 boolean button1 = false; // This is for hero2 to appear and for hero2 to disappear.
 float hero2Time = 1; // This is like the time how long the hero2 will appear. Like frame.
-boolean button2 = false; // The same process as the hero2
-float hero3TIme = 1; // The same process as the hero2
+boolean button2 = false; // The same process as the hero2.
+float hero3Time = 1; // The same process as the hero2.
 PImage photo;
 PImage photo1;
 PImage photo2;
@@ -39,11 +39,17 @@ void draw(){
   
   if(button1){ // If button is true,
     hero2.display(); // this hero2 will appear.
-    
     hero2Time = hero2Time - 1; // This is how long it will be deleting so that hero2 will be able to disspaer afterwards.
-    
     if(hero2Time <= 0){ // This is when heroTIme gets to zero, it will dissapear.
     button1 = false; // like this, the button will be changed it as false, so hero2 will disappear.
+    }
+  }
+  
+  else if(button2){
+    hero3.display(); // The same process as the hero2.
+    hero3Time = hero3Time - 1; // The same as the hero2.
+    if(hero3Time <= 0){ // The same as the hero2.
+    button2 = false; // The same as the hero2.
     }
   }
   
@@ -51,37 +57,28 @@ void draw(){
     hero1.display(); // So, basically it shows hero1 when the button is false.
   }
   
-  if(button2){ // If button is true,
-    hero3.display(); // this hero3 will appear. The same process as the hero2
-    
-    hero3Time = hero3Time - 1; // The same process as the hero2
-    
-    if(hero3Time <= 0){ // The same process as the hero2
-    button2 = false; // The same process as the hero2
-    }
-  }
-  
-  else{
-    hero1.diplay(); // The smae process as the hero2
-  }
-  
   if(keyPressed){ // To make the Hero move when players press a certain key. This is for only left and right.
+    
     if(keyCode == RIGHT){
     hero1.X += 1; // move to right.
     }
+      
       else if(keyCode == LEFT){
     hero1.X -= 1; // move to left.
       }
-  }
+      
     if(keyPressed){
       if(key == 'd'){
         button1 = true;
         hero2Time = 150; // This is the total amout of time that will appear on the screen, it is 2.5 secs.
       }
     }
+      
     if(keyPressed){
       if(key == 'a'){
         button2 = true;
-        hero3Time = 150; // The same process as the hero2
+        hero3Time = 150; // The same process as the hero2.
       }
+    }
+  }
 }

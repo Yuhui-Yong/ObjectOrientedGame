@@ -1,5 +1,13 @@
 class Hero2{
   
+  float X; // location 
+  float Y; // location
+  
+  Hero2(float startX, float startY){
+  X = startX; // for constructor
+  Y = startY; // for constructor
+  }
+  
   void display() {
     translate(X, Y); // This is like Relative coordinates and make everything to be stick together
     rectMode(CENTER); // To place things in the center

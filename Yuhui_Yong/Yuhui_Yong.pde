@@ -26,7 +26,7 @@ void draw(){
   background(240); // A little bit of grey background
   noStroke();
   fill(77, 90, 75); // Mixed with Green and Grey
-  rect(0, 745, 1000, 900); // Ground
+  rect(width/2, 800, 1000, 110); // Ground
   image(photo, width/2, height/2, 100, 100);
   image(photo1, 700, 500, 100, 100);
   image(photo2, 300, 100, 100, 100);
@@ -34,11 +34,17 @@ void draw(){
   hero1.display();
   //hero2.display();
   //hero3.display();
+  
   if(keyPressed) { // To make the Hero move when players press a certain key. This is for only left and right
-  if(keyCode == RIGHT) {
+    if(keyCode == RIGHT) {
     hero1.X += 1; // move to right
   } else if(keyCode == LEFT) {
     hero1.X -= 1; // move to left
+    
+    if(keyPressed) {
+      if(keyCode == "a") {
+        hero2.display;
+      }
   }
  }
 }

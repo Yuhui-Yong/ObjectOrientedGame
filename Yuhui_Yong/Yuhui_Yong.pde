@@ -43,8 +43,8 @@ void setup(){
   RImages[1] = loadImage("Meteor Rotated2.png"); // Blue Meteor.
   RImages[2] = loadImage("Rock1.png"); // Rock1.
   RImages[3] = loadImage("Rock2.png"); // Rock2.
-  photo = loadImage("WHP"); // Winning Hp.
-  photo1 = loadImage("LHP"); // Losing Hp.
+  photo = loadImage("WHP.png"); // Winning Hp.
+  photo1 = loadImage("LHP.png"); // Losing Hp.
 }
 
 void draw(){
@@ -70,6 +70,8 @@ void draw(){
     obstacles[i].update(); // The position for all of the obstacles.
     obstacles[i].display(); // The shape for all of the obstacles.
   }
+  
+  HitBox();
   
   if(button1){ // If button is true,
     hero2.display(); // this hero2 will appear.
@@ -125,13 +127,42 @@ void draw(){
         aCooldown = 300; // The same process as the hero2.
         }
       }
-      //if (hp >= 1){
-      //image(photo, 100, 700, 50, 50);
-      //else image(photo2, 100, 700, 50, 50);
-      }
-      
+      if (hp == 1){
+      image(photo, 100, 700, 50, 50);
+      }else image(photo1, 100, 700, 50, 50);
+      if (hp == 2){
+        image(photo, 100, 700, 50, 50);
+      }else image(photo1, 100, 700, 50, 50);
+      if (hp == 3){
+        image(photo, 100, 700, 50, 50);
+      }else image(photo1, 100, 700, 50, 50);
+  }
       void keyPressed(){ // I made it seperately, working with keyPressed then, it wored fine finally.
       if(key == ' '){
       hero1.jump();
     }
   }
+  
+  //Now, here I have to make like a hitbox for hero, so it can get hit from the obstacles.
+  void HitBox(){
+  for (int i = 0; i < count; i++){ // Here, I have total 15 obstacles.
+    
+    float hx = hero1.heroPos.x; // This is heroPos.x, which is obviously x position for hero1.
+    float hy = hero1.heroPos.y; // This is heroPos.y, which is obviosuly y position for hero1.
+    float ox = obstacles[i].x; // Now, we need the obstacles x cooridnate as well.
+    float oy = obstacles[i].y; // Also, the y cooridnate as wekk.
+
+    boolean hitX = (ox > hx - 25) && (ox < hx + 25); // So, here, hx - 25 and hx + 25 are 25 pixels to the left of the hero's center, and 25 pixels to the right of the hero's center.
+    boolean hitY = (oy > hy - 40) && (oy < hy + 40); // Also, the same function but as y cooridinate.
+    // And those boolean must work when both are true.
+
+    if (hitX && hitY){ // So, in here, if they overlap horizontally and vertically, the two objects have actually collided.
+      hp = hp - 1; // and reduce hp.
+      obstacles[i].reset(); // and make the obstacles that hit the hero go up again and fall.
+      
+      if (hp < 0) { // This is for not go to minus value.
+        hp = 0;
+      }
+    }
+  }
+}

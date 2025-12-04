@@ -1,6 +1,15 @@
-class Hero1{
+class Hero1{ // This is the MainHero
+  
+  float X; // location 
+  float Y; // location
+  
+  Hero1(float startX, float startY){
+  X = startX; // for constructor
+  Y = startY; // for constructor
+  }
   
   void display() {
+    translate(width/2, 500);
     rectMode(CENTER); // To place things in the center
     noStroke(); // noStroke
     fill(255, 203, 147); // Skin color

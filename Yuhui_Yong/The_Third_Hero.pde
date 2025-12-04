@@ -17,7 +17,7 @@ class Hero3{
     fill(255, 203, 147); // Skin color
     rect(483, 627, 7, 6); // Left hand
     rect(517, 627, 7, 6); // Right hand
-    fill(255, 0, 0);
-    circle(width/2, 550, 50);
+    fill(255, 0, 0); // attaking ability shape
+    circle(width/2, 550, 50); // attaking ability shape
   }
 }

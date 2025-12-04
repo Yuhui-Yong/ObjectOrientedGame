@@ -17,8 +17,8 @@ class Hero2{
     fill(255, 203, 147); // Skin color
     rect(483, 627, 7, 6); // Left hand
     rect(517, 627, 7, 6); // Right hand
-    stroke(20, 0, 255);
-    strokeWeight(5);
-    line(455, 600, 545, 600);
+    stroke(20, 0, 255); // defense ability shape
+    strokeWeight(5); // defense ability shape
+    line(455, 600, 545, 600); // defense ability shape
   }
 }

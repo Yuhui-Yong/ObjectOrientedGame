@@ -1,7 +1,9 @@
 class Hero3{
 
   void display() {
-    translate(hero1.X, hero1.Y); // This is like Relative coordinates and make everything to be stick together.
+    // translate(hero1.X, hero1.Y); // This is like Relative coordinates and make everything to be stick together.
+    pushMatrix(); // The same.
+    translate(hero1.heroPos.x, hero1.heroPos.y); // 
     rectMode(CENTER); // To place things in the center.
     noStroke(); // noStroke.
     fill(255, 203, 147); // Skin color.
@@ -24,5 +26,6 @@ class Hero3{
     rect(17, -24, 7, 6); // Right hand.
     fill(255, 0, 0); // attaking ability shape.
     circle(0, -100, 50); // attaking ability shape.
+    popMatrix(); // The same.
   }
 }

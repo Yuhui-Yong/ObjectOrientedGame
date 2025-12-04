@@ -1,8 +1,9 @@
 class Hero2{
   
   void display() {
-    // translate(X, Y); // This is like Relative coordinates and make everything to be stick together.
-    translate(hero1.X, hero1.Y); // Now, Hero2 will be moving at the same position as Hero2. Hero3 will have the same function.
+    pushMatrix(); // Now, I need this 100%
+    // translate(hero1.X, hero1.Y); // This is like Relative coordinates and make everything to be stick together.
+    translate(hero1.heroPos.x, hero1.heroPos.y); // Now, Hero2 will be moving at the same position as Hero2. Hero3 will have the same function.
     rectMode(CENTER); // To place things in the center.
     noStroke(); // noStroke.
     fill(255, 203, 147); // Skin color.
@@ -26,5 +27,6 @@ class Hero2{
     stroke(20, 0, 255); // defense ability shape.
     strokeWeight(5); // defense ability shape.
     line(-45, -55, 45, -55); // defense ability shape.
+    popMatrix();
   }
 }

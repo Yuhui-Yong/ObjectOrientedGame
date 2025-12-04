@@ -11,12 +11,15 @@ float aCooldown = 0; // This is for acooldown.
 // For the array
 int count = 15; // porbably 15, but will fix it, depending on the situation.
 Obstacles[] obstacles = new Obstacles[count]; // Array Obstacles.
+int hp = 3; // This is the amout of HP you have.
 
 //PImage photo;
 //PImage photo1;
 //PImage photo2;
 //PImage photo3;
 PImage[] RImages = new PImage[4]; // Array Images
+PImage photo; // photo I will be using for Hp.
+PImage photo1; // photo1 I will be using for Hp.
 
 
 void setup(){
@@ -40,6 +43,8 @@ void setup(){
   RImages[1] = loadImage("Meteor Rotated2.png"); // Blue Meteor.
   RImages[2] = loadImage("Rock1.png"); // Rock1.
   RImages[3] = loadImage("Rock2.png"); // Rock2.
+  photo = loadImage("WHP"); // Winning Hp.
+  photo1 = loadImage("LHP"); // Losing Hp.
 }
 
 void draw(){
@@ -120,8 +125,12 @@ void draw(){
         aCooldown = 300; // The same process as the hero2.
         }
       }
-  }
-      void keyPressed(){
+      //if (hp >= 1){
+      //image(photo, 100, 700, 50, 50);
+      //else image(photo2, 100, 700, 50, 50);
+      }
+      
+      void keyPressed(){ // I made it seperately, working with keyPressed then, it wored fine finally.
       if(key == ' '){
       hero1.jump();
     }

@@ -1,4 +1,4 @@
-class Hero1{
+class Hero2{
   
   void display() {
     rectMode(CENTER); // To place things in the center
@@ -12,16 +12,10 @@ class Hero1{
     fill(25, 98, 28); // Green
     rect(width/2, 879, 25, 38); // Upper body
     fill(25, 98, 28); // Green
-    rect(483, 882, 8, 43); // Left arm
-    rect(517, 882, 8, 43); // Right arm
+    rect(483, 852, 8, 43); // Left arm
+    rect(517, 852, 8, 43); // Right arm
     fill(255, 203, 147); // Skin color
-    rect(483, 907, 7, 6); // Left hand
-    rect(517, 907, 7, 6); // Right hand
+    rect(483, 827, 7, 6); // Left hand
+    rect(517, 827, 7, 6); // Right hand
   }
 }
-
-//if(keyPressed) {
-//  if(keyCode == RIGHT) {
-//    personX = personX + 1; // move to right
-//  } else if(keyCode == LEFT) {
-//    personX = personX - 1; // move to left

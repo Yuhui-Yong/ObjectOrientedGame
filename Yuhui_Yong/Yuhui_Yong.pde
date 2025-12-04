@@ -103,12 +103,12 @@ void draw(){
     
     if(keyCode == RIGHT){
     // hero1.X += 1; // move to right.
-    hero1.heroPos.x = hero1.heroPos.x + 1; // Now, I have to make this as PVector thing.
+    hero1.heroPos.x = hero1.heroPos.x + 2; // Now, I have to make this as PVector thing.
     }
       
       else if(keyCode == LEFT){
     // hero1.X -= 1; // move to left.
-    hero1.heroPos.x = hero1.heroPos.x - 1; // The same.
+    hero1.heroPos.x = hero1.heroPos.x - 2; // The same.
       }
       
       if(key == 'd'){
@@ -152,26 +152,55 @@ void draw(){
     float hy = hero1.heroPos.y; // This is heroPos.y, which is obviosuly y position for hero1.
     float ox = obstacles[i].x; // Now, we need the obstacles x cooridnate as well.
     float oy = obstacles[i].y; // Also, the y cooridnate as wekk.
+    
+    boolean handled = false; // for later, if the hero processes the obstacles well.
 
-    boolean hitX = (ox > hx - 25) && (ox < hx + 25); // So, here, hx - 25 and hx + 25 are 25 pixels to the left of the hero's center, and 25 pixels to the right of the hero's center.
-    boolean hitY = (oy > hy - 40) && (oy < hy + 40); // Also, the same function but as y cooridinate.
+    //boolean hitX = (ox > hx - 25) && (ox < hx + 25); // So, here, hx - 25 and hx + 25 are 25 pixels to the left of the hero's center, and 25 pixels to the right of the hero's center.
+    //boolean hitY = (oy > hy - 40) && (oy < hy + 40); // Also, the same function but as y cooridinate.
     // And those boolean must work when both are true.
 
-    if (hitX && hitY){ // So, in here, if they overlap horizontally and vertically, the two objects have actually collided.
+    //if (hitX && hitY){ // So, in here, if they overlap horizontally and vertically, the two objects have actually collided.
     // Now, here if I click d and a keys to defense and attack I need to have that function in here as well. I could have made another function for it but I already have kinda same logic here so I am using it.
     
-      if (button1 && hero2Time > 0){ // Here, for button, this is a boolean variable I manage that becomes true when the d key is pressed and false when the defese timer expires. Like in other words, if button is true, shield is wroking right now.
+      if(button1 && hero2Time > 0){ // Here, for button, this is a boolean variable I manage that becomes true when the d key is pressed and false when the defese timer expires. Like in other words, if button is true, shield is wroking right now.
       // For hero2Time > 0. this is the number of frames remaining for the shield. For example, it starts at 80 and decreases to 79, 78, 77... and > 0 means there's still time left.
-        obstacles[i].reset(); // This is just for making the obstacles that hit or got defensed or got attcked go up.
-        continue; // Now, here, this is veryimportant. I wrote this to skip the whole process below because once it works, which means it blocks the obstacles, hero still gets reduced his hp because processing is gonna run code below as normal, so
-        // I had to skip the reducing hp process so that it does not get reduced.
+        float sx = hx; // shield center position.
+        float sy = hy - 55; // shield center position.
+        
+        boolean HSX = (ox > sx - 45) && (ox < sx + 45); // same logic with the hitbox.
+        boolean HSY = (oy > sy - 10) && (oy < sy + 10);
+        
+        if(HSX && HSY){
+        obstacles[i].reset(); // It disappears when blocked by a shield. Like go up techinically.
+        handled = true; // and then, this obstacle has been handled.
       }
+    }
 
-      if (button2 && hero3Time > 0){ // This is litreally the same logic as button1
+      if (!handled && button2 && hero3Time > 0) {
+      float ax = hx; // the energy circle center position.
+      float ay = hy - 100; // the energy circle center position.
+
+      boolean HAX = (ox > ax - 25) && (ox < ax + 25); // The same logic with hero2.
+      boolean HAY = (oy > ay - 25) && (oy < ay + 25); // Ths same logic with hero22.
+
+      if (HAX && HAY) { // The same logic with hero2.
         obstacles[i].reset();
-        continue;
+        handled = true;
       }
+    }
+
+        //obstacles[i].reset(); // This is just for making the obstacles that hit or got defensed or got attcked go up.
+        //continue; // Now, here, this is veryimportant. I wrote this to skip the whole process below because once it works, which means it blocks the obstacles, hero still gets reduced his hp because processing is gonna run code below as normal, so
+        // I had to skip the reducing hp process so that it does not get reduced.
+
+      //if(button2 && hero3Time > 0){ // This is litreally the same logic as button1
+        //obstacles[i].reset();
+        //continue;
     
+      boolean HBX = (ox > hx - 25) && (ox < hx + 25); // This is for the body hitbox now.
+      boolean HBY = (oy > hy - 40) && (oy < hy + 40); // Y coordinate.
+      
+      if(!handled && HBX && HBY) {
       hp = hp - 1; // and reduce hp.
       obstacles[i].reset(); // and make the obstacles that hit the hero go up again and fall.
       

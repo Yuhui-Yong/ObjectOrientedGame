@@ -1,7 +1,7 @@
 Hero1 hero1; // declare variable.
 Hero2 hero2; // declare variable.
 Hero3 hero3; // declare variable.
-boolean button = false; // This is for hero2 to appear.
+boolean button = false; // This is for hero2 to appear and for hero2 to disappear.
 float hero2Time = 1; // This is like the time how long the hero2 will appear. Like frame.
 PImage photo;
 PImage photo1;
@@ -34,27 +34,31 @@ void draw(){
   image(photo1, 700, 500, 100, 100);
   image(photo2, 300, 100, 100, 100);
   image(photo3, 900, 700, 100, 100);
-  hero1.display();
   
   if(button){ // If button is true,
-    hero2.display(); // This hero2 will appear.
+    hero2.display(); // this hero2 will appear.
     
     hero2Time = hero2Time - 1; // This is how long it will be deleting so that hero2 will be able to disspaer afterwards.
     
     if(hero2Time <= 0){ // This is when heroTIme gets to zero, it will dissapear.
     button = false; // like this, the button will be changed it as false, so hero2 will disappear.
+    }
   }
- }
+  
+  else{
+    hero1.display(); // So, basically it shows hero1 when the button is false.
+  }
   
   //hero3.display();
   
   if(keyPressed){ // To make the Hero move when players press a certain key. This is for only left and right.
     if(keyCode == RIGHT){
     hero1.X += 1; // move to right.
-  } else if(keyCode == LEFT){
+    }
+      else if(keyCode == LEFT){
     hero1.X -= 1; // move to left.
+      }
   }
-}
     if(keyPressed){
       if(key == 'd'){
         button = true;

@@ -1,6 +1,6 @@
-class Hero2{
-  
-  void display() {
+class Hero3{
+
+void display() {
     rectMode(CENTER); // To place things in the center
     noStroke(); // noStroke
     fill(255, 203, 147); // Skin color
@@ -17,8 +17,7 @@ class Hero2{
     fill(255, 203, 147); // Skin color
     rect(483, 827, 7, 6); // Left hand
     rect(517, 827, 7, 6); // Right hand
-    stroke(20, 0, 255);
-    strokeWeight(5);
-    line(455, 800, 545, 800);
+    fill(255, 0, 0);
+    circle(width/2, 780, 50);
   }
 }

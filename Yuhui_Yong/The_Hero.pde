@@ -19,9 +19,3 @@ class Hero1{
     rect(517, 907, 7, 6); // Right hand
   }
 }
-
-//if(keyPressed) {
-//  if(keyCode == RIGHT) {
-//    personX = personX + 1; // move to right
-//  } else if(keyCode == LEFT) {
-//    personX = personX - 1; // move to left

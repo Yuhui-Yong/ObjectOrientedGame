@@ -5,16 +5,24 @@ class Hero1{ // This is the MainHero.
   PVector gravy;
   float X; // location.
   float Y; // location.
+  float groundY;
+  boolean OnGround = true;
   
   Hero1(float startX, float startY){
+    heroPos = new PVector(startX, startY);
+    heroVel = new PVector(0, 0);
+    gravy = new PVector(0, 0.5);
+    
   X = startX; // for constructor.
   Y = startY; // for constructor.
+  groundY = startY;
   }
   
   void display() {
     pushMatrix(); // I don't think I have to use this for my game since there is no such things that push things out, but just in case.
     // For making only the Hero move, if I don't use it not only the Hero but everything will be moving because they are also influnced by translate.
-    translate(X, Y); // This is like Relative coordinates and make everything to be stick together.
+    // translate(X, Y); // This is like Relative coordinates and make everything to be stick together.
+    translate(heroPos.x, heroPos.y); // Now, the standard is PVector.
     rectMode(CENTER); // To place things in the center.
     noStroke(); // noStroke.
     fill(255, 203, 147); // Skin color.
@@ -36,5 +44,23 @@ class Hero1{ // This is the MainHero.
     rect(-17, 56, 7, 6); // Left hand.
     rect(17, 56, 7, 6); // Right hand.
     popMatrix(); // End Matrix.
+  }
+
+  void update(){
+    heroVel.add(gravy); // vel = vel + gravy.
+    heroPos.add(heroVel); // pos = pos + vel.
+  
+    if(heroPos.y > groundY){
+      heroPos.y = groundY;
+      heroVel.y = 0;
+      OnGround = true;
+  }
+}
+
+  void jump(){
+    if(OnGround){
+      heroVel.y = -12;
+      OnGround = false;
+    }
   }
 }

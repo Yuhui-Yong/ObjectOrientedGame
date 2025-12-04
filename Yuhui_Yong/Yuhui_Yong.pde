@@ -49,6 +49,8 @@ void draw(){
   if(aCooldown > 0){ // The same process as the hero2.
       aCooldown = aCooldown - 1; // The same process as the hero2.
   }
+  
+    hero1.update(); // The vel and the gravy.
     
   background(240); // A little bit of grey background.
   noStroke();
@@ -93,11 +95,13 @@ void draw(){
   if(keyPressed){ // To make the Hero move when players press a certain key. This is for only left and right.
     
     if(keyCode == RIGHT){
-    hero1.X += 1; // move to right.
+    // hero1.X += 1; // move to right.
+    hero1.heroPos.x = hero1.heroPos.x + 1; // Now, I have to make this as PVector thing.
     }
       
       else if(keyCode == LEFT){
-    hero1.X -= 1; // move to left.
+    // hero1.X -= 1; // move to left.
+    hero1.heroPos.x = hero1.heroPos.x - 1; // The same.
       }
       
     if(keyPressed){
@@ -118,8 +122,12 @@ void draw(){
           button1 = false; // Ths same process as the hero2.
         hero3Time = 80; // The same process as the hero2.
         aCooldown = 300; // The same process as the hero2.
+        }
       }
     }
+        
+        if(keyPressed){
+          if(key == ' ');
+          hero1.jump();
+        }
   }
-}
-}

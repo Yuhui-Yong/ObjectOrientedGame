@@ -127,21 +127,22 @@ void draw(){
         aCooldown = 300; // The same process as the hero2.
         }
       }
-      if (hp == 1){
+      if (hp >= 1){
       image(photo, 100, 700, 50, 50);
       }else image(photo1, 100, 700, 50, 50);
-      if (hp == 2){
-        image(photo, 100, 700, 50, 50);
-      }else image(photo1, 100, 700, 50, 50);
-      if (hp == 3){
-        image(photo, 100, 700, 50, 50);
-      }else image(photo1, 100, 700, 50, 50);
+      //if (hp == 2){
+        //image(photo, 100, 700, 50, 50);
+      //}else image(photo1, 100, 700, 50, 50);
+      //if (hp == 3){
+        //image(photo, 100, 700, 50, 50);
+      //}else image(photo1, 100, 700, 50, 50);
   }
       void keyPressed(){ // I made it seperately, working with keyPressed then, it wored fine finally.
       if(key == ' '){
       hero1.jump();
     }
   }
+  
   
   //Now, here I have to make like a hitbox for hero, so it can get hit from the obstacles.
   void HitBox(){
@@ -157,11 +158,28 @@ void draw(){
     // And those boolean must work when both are true.
 
     if (hitX && hitY){ // So, in here, if they overlap horizontally and vertically, the two objects have actually collided.
+    // Now, here if I click d and a keys to defense and attack I need to have that function in here as well. I could have made another function for it but I already have kinda same logic here so I am using it.
+    
+      if (button1 && hero2Time > 0){ // Here, for button, this is a boolean variable I manage that becomes true when the d key is pressed and false when the defese timer expires. Like in other words, if button is true, shield is wroking right now.
+      // For hero2Time > 0. this is the number of frames remaining for the shield. For example, it starts at 80 and decreases to 79, 78, 77... and > 0 means there's still time left.
+        obstacles[i].reset(); // This is just for making the obstacles that hit or got defensed or got attcked go up.
+        continue; // Now, here, this is veryimportant. I wrote this to skip the whole process below because once it works, which means it blocks the obstacles, hero still gets reduced his hp because processing is gonna run code below as normal, so
+        // I had to skip the reducing hp process so that it does not get reduced.
+      }
+
+      if (button2 && hero3Time > 0){ // This is litreally the same logic as button1
+        obstacles[i].reset();
+        continue;
+      }
+    
       hp = hp - 1; // and reduce hp.
       obstacles[i].reset(); // and make the obstacles that hit the hero go up again and fall.
       
       if (hp < 0) { // This is for not go to minus value.
         hp = 0;
+        
+        // I relaized that I did not consider about the size for hero2 ability and hero3 ability, I only made it works for hero1 when the obstacles hit hero1, but when I use ability the abilities are way more located up so, I need to make hitboxes for those
+        // hero2 and hero3. So, I am bout to change the whole thing in the HitBox function.
       }
     }
   }

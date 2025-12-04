@@ -9,22 +9,26 @@ class Hero1{ // This is the MainHero
   }
   
   void display() {
-    translate(width/2, 500);
+    translate(width/2, 648); // This is like Relative coordinates and make everything to be stick together
     rectMode(CENTER); // To place things in the center
     noStroke(); // noStroke
     fill(255, 203, 147); // Skin color
-    square(width/2, 650, 20); // Face
-    fill(144, 82, 19); // brown
-    rect(width/2, 740, 25, 10); // Shoe
-    fill(36, 41, 147); // blue
-    rect(width/2, 717, 25, 41); // Lower body
+    square(0, 0, 20); // Face and the start point of this Hero character
+    fill(0); // Black
+    rect(0, -7, 20, 7); // Hair
+    rect(-10, 0, 3, 20); // Side Hair
+    rect(10, 0, 3, 20); // Side Hair
+    fill(144, 82, 19); // Brown
+    rect(0, 93, 25, 10); // Shoe
+    fill(36, 41, 147); // Blue
+    rect(0, 68, 25, 41); // Lower body
     fill(25, 98, 28); // Green
-    rect(width/2, 679, 25, 38); // Upper body
+    rect(0, 29, 25, 38); // Upper body
     fill(25, 98, 28); // Green
-    rect(483, 682, 9, 43); // Left arm
-    rect(517, 682, 9, 43); // Right arm
+    rect(-17, 31.5, 9, 43); // Left arm
+    rect(17, 31.5, 9, 43); // Right arm
     fill(255, 203, 147); // Skin color
-    rect(483, 707, 7, 6); // Left hand
-    rect(517, 707, 7, 6); // Right hand
+    rect(-17, 56, 7, 6); // Left hand
+    rect(17, 56, 7, 6); // Right hand
   }
 }

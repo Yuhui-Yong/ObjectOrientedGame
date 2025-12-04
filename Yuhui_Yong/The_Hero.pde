@@ -1,5 +1,8 @@
 class Hero1{ // This is the MainHero.
   
+  PVector heroPos;
+  PVector heroVel;
+  PVector gravy;
   float X; // location.
   float Y; // location.
   

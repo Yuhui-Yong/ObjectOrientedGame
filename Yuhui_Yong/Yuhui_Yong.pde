@@ -8,11 +8,15 @@ float hero3Time = 0; // The same process as the hero2.
 // Now, I wanted players to have a cooldown so that they cannot be pressing quickly.
 float dCooldown = 0; // This is for dcooldown.
 float aCooldown = 0; // This is for acooldown.
+// For the array
+int count = 15; // porbably 15, but will fix it, depending on the situation.
+Obstacles[] obstacles = new Obstacles[count]; // Array Obstacles.
 
-PImage photo;
-PImage photo1;
-PImage photo2;
-PImage photo3;
+//PImage photo;
+//PImage photo1;
+//PImage photo2;
+//PImage photo3;
+PImage[] RImages = new PImage[4]; // Array Images
 
 
 void setup(){
@@ -20,15 +24,22 @@ void setup(){
   hero2 = new Hero2(); // initilize defense Hero.
   hero3 = new Hero3(); // initilize attacking Hero.
   size(1000, 800); // The window size that I wanna go for.
+  for (int i = 0; i < count; i++){ // Loop i until 15 and 
+    obstacles[i] = new Obstacles(); // put it into here.
+  }
   //background(240); // A little bit of grey background.
   //noStroke();
   //fill(77, 90, 75); // Mixed with Green and Grey.
   //rect(0, 745, 1000, 900); // Ground.
   // I have to move this into draw(), so that when the Hero moves the shadow will disapear.
-  photo = loadImage("Meteor Rotated1.png"); // Red Meteor.
-  photo1 = loadImage("Meteor Rotated2.png"); // Blue Meteor.
-  photo2 = loadImage("Rock1.png"); // Rock1.
-  photo3 = loadImage("Rock2.png"); // Rock2.
+  //photo = loadImage("Meteor Rotated1.png"); // Red Meteor.
+  //photo1 = loadImage("Meteor Rotated2.png"); // Blue Meteor.
+  //photo2 = loadImage("Rock1.png"); // Rock1.
+  //photo3 = loadImage("Rock2.png"); // Rock2.
+  RImages[0] = loadImage("Meteor Rotated1.png"); // Red Meteor.
+  RImages[1] = loadImage("Meteor Rotated2.png"); // Blue Meteor.
+  RImages[2] = loadImage("Rock1.png"); // Rock1.
+  RImages[3] = loadImage("Rock2.png"); // Rock2.
 }
 
 void draw(){
@@ -43,10 +54,15 @@ void draw(){
   noStroke();
   fill(77, 90, 75); // Mixed with Green and Grey.
   rect(width/2, 800, 1000, 110); // Ground
-  image(photo, width/2, height/2, 100, 100);
-  image(photo1, 700, 500, 100, 100);
-  image(photo2, 300, 100, 100, 100);
-  image(photo3, 900, 700, 100, 100);
+  //image(photo, width/2, height/2, 100, 100);
+  //image(photo1, 700, 500, 100, 100);
+  //image(photo2, 300, 100, 100, 100);
+  //image(photo3, 900, 700, 100, 100);
+  
+  for(int i = 0; i < count; i++){
+    obstacles[i].update(); // The position for all of the obstacles.
+    obstacles[i].display(); // The shape for all of the obstacles.
+  }
   
   if(button1){ // If button is true,
     hero2.display(); // this hero2 will appear.

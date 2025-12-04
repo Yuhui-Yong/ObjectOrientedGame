@@ -92,7 +92,7 @@ void draw(){
     hero1.display(); // So, basically it shows hero1 when the button is false.
   }
   
-  if(keyPressed){ // To make the Hero move when players press a certain key. This is for only left and right.
+  // if(keyPressed){ // To make the Hero move when players press a certain key. This is for only left and right.
     
     if(keyCode == RIGHT){
     // hero1.X += 1; // move to right.
@@ -120,7 +120,9 @@ void draw(){
         aCooldown = 300; // The same process as the hero2.
         }
       }
-      if(key == ' ');
+  }
+      void keyPressed(){
+      if(key == ' '){
       hero1.jump();
     }
   }

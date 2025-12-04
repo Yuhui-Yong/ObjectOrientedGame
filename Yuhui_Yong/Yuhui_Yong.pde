@@ -104,7 +104,6 @@ void draw(){
     hero1.heroPos.x = hero1.heroPos.x - 1; // The same.
       }
       
-    if(keyPressed){
       if(key == 'd'){
         if(dCooldown == 0){ // Here, if dCooldown reaches at 0,
           button1 = true; // hero2 will appear but,
@@ -113,9 +112,6 @@ void draw(){
         dCooldown = 300; // Ths total amout of the fram for acooldown.
       }
     }
-    }
-      
-    if(keyPressed){
       if(key == 'a'){
         if(aCooldown == 0){ // The same process as the hero2.
           button2 = true; // The same process as the hero2.
@@ -124,10 +120,7 @@ void draw(){
         aCooldown = 300; // The same process as the hero2.
         }
       }
+      if(key == ' ');
+      hero1.jump();
     }
-        
-        if(keyPressed){
-          if(key == ' ');
-          hero1.jump();
-        }
   }

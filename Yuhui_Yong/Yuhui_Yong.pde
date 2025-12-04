@@ -1,10 +1,12 @@
 Hero1 hero1; // declare variable
 Hero2 hero2; // declare variable
 Hero3 hero3; // declare variable
+boolean button = false; // This is for hero2
 PImage photo;
 PImage photo1;
 PImage photo2;
 PImage photo3;
+
 
 void setup(){
   hero1 = new Hero1(width/2, 648); // initilize the MainHero and strat with the center of the window on the ground
@@ -32,7 +34,11 @@ void draw(){
   image(photo2, 300, 100, 100, 100);
   image(photo3, 900, 700, 100, 100);
   hero1.display();
-  //hero2.display();
+  
+  if (button) {
+    hero2.display();
+  }
+  
   //hero3.display();
   
   if(keyPressed) { // To make the Hero move when players press a certain key. This is for only left and right
@@ -40,11 +46,11 @@ void draw(){
     hero1.X += 1; // move to right
   } else if(keyCode == LEFT) {
     hero1.X -= 1; // move to left
-    
-    if(keyPressed) {
-      if(keyCode == "a") {
-        hero2.display;
-      }
   }
- }
+}
+    if(keyPressed) {
+      if(key == 'a') {
+        button = true;
+      }
+    }
 }

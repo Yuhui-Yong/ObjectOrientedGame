@@ -20,6 +20,8 @@ int hp = 3; // This is the amout of HP you have.
 PImage[] RImages = new PImage[4]; // Array Images
 PImage photo; // photo I will be using for Hp.
 PImage photo1; // photo1 I will be using for Hp.
+PImage photo2; // pohoto2 I will be using for GameWin
+PImage photo3; // photo3 I will be using for GameLost
 
 
 void setup(){
@@ -45,6 +47,8 @@ void setup(){
   RImages[3] = loadImage("Rock2.png"); // Rock2.
   photo = loadImage("WHP.png"); // Winning Hp.
   photo1 = loadImage("LHP.png"); // Losing Hp.
+  photo2 = loadImage("YouWin.png"); // winning condition.
+  photo3 = loadImage("YouLost.png"); // losing condition.
 }
 
 void draw(){

@@ -22,6 +22,8 @@ PImage photo; // photo I will be using for Hp.
 PImage photo1; // photo1 I will be using for Hp.
 PImage photo2; // pohoto2 I will be using for GameWin
 PImage photo3; // photo3 I will be using for GameLost
+boolean LostGame = false; // For making players to see if they lost all of their hp.
+boolean WonGame = false; // For making players to see if they reaches a certain scores.
 
 
 void setup(){
@@ -119,28 +121,37 @@ void draw(){
         if(dCooldown == 0){ // Here, if dCooldown reaches at 0,
           button1 = true; // hero2 will appear but,
           button2 = false; // hero3 will not appear so that it cannot be together. It's clean.
-        hero2Time = 80; // This is the total amout of time that will appear on the screen, it is 2.5 secs.
-        dCooldown = 300; // Ths total amout of the fram for acooldown.
+          hero2Time = 80; // This is the total amout of time that will appear on the screen, it is 2.5 secs.
+          dCooldown = 300; // Ths total amout of the fram for acooldown.
       }
     }
       if(key == 'a'){
         if(aCooldown == 0){ // The same process as the hero2.
           button2 = true; // The same process as the hero2.
           button1 = false; // Ths same process as the hero2.
-        hero3Time = 80; // The same process as the hero2.
-        aCooldown = 300; // The same process as the hero2.
+          hero3Time = 80; // The same process as the hero2.
+          aCooldown = 300; // The same process as the hero2.
         }
       }
       if (hp >= 1){
-      image(photo, 100, 700, 50, 50);
-      }else image(photo1, 100, 700, 50, 50);
-      //if (hp == 2){
-        //image(photo, 100, 700, 50, 50);
-      //}else image(photo1, 100, 700, 50, 50);
-      //if (hp == 3){
-        //image(photo, 100, 700, 50, 50);
-      //}else image(photo1, 100, 700, 50, 50);
+      image(photo, 50, 770, 50, 50);
+      }else image(photo1, 50, 770, 50, 50);
+      if (hp >= 2){
+        image(photo, 100, 770, 50, 50);
+      }else image(photo1, 100, 770, 50, 50);
+      if (hp >= 3){
+        image(photo, 150, 770, 50, 50);
+      }else image(photo1, 150, 770, 50, 50);
+      
+      if(hp <= 0){
+        LostGame = true; // Now, make the LostGame be true, so that it can run. However, I don't think I need this since if hp is 0, the screen will just pop up automatically cause I am using if here. But, just in case.
+        image(photo3, width/2, height/2, 1000, 1000); // Now, when your hp is 0, the photo3 will pop up.
+        fill(255); // White.
+        textSize(25); // TextSize.
+        text("Press R to restart", 400, 700); // One Text that tells you to press the key to restart. I will add one more, and once you lose, "photo3" will pop up and say You Lost but that is not a word, I drew it.
+        println("Press R to restart"); // I just put it for no reason.
   }
+ }
       void keyPressed(){ // I made it seperately, working with keyPressed then, it wored fine finally.
       if(key == ' '){
       hero1.jump();

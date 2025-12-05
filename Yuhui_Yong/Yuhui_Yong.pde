@@ -12,6 +12,8 @@ float aCooldown = 0; // This is for acooldown.
 int count = 15; // porbably 15, but will fix it, depending on the situation.
 Obstacles[] obstacles = new Obstacles[count]; // Array Obstacles.
 int hp = 3; // This is the amout of HP you have.
+int score = 0; // This is for score.
+int goal = 10; // This is for winning score like goal to finish the game.
 
 //PImage photo;
 //PImage photo1;
@@ -145,19 +147,31 @@ void draw(){
       
       if(hp <= 0){
         LostGame = true; // Now, make the LostGame be true, so that it can run. However, I don't think I need this since if hp is 0, the screen will just pop up automatically cause I am using if here. But, just in case.
-        image(photo3, width/2, height/2, 1000, 1000); // Now, when your hp is 0, the photo3 will pop up.
+        image(photo3, width/2, height/2, 1200, 1000); // Now, when your hp is 0, the photo3 will pop up.
         fill(255); // White.
         textSize(25); // TextSize.
         text("Press R to restart", 400, 700); // One Text that tells you to press the key to restart. I will add one more, and once you lose, "photo3" will pop up and say You Lost but that is not a word, I drew it.
         println("Press R to restart"); // I just put it for no reason.
+      }
+      
+      if(score >= goal){
+      WonGame = true;
+      image(photo2, width/2, height/2, 1200, 1000);
+      fill(255); // White.
+      textSize(25); // TextSize.
+      text("Press R to restart", 400, 700);
+      println("Press R to restart");
   }
- }
+}
+ 
       void keyPressed(){ // I made it seperately, working with keyPressed then, it wored fine finally.
       if(key == ' '){
       hero1.jump();
     }
-  }
-  
+        if((key == 'r') && (hp <= 0 || score >= goal)){ // If players press r, it will restart the game, regardless of whether you are at the You Lost screen or You Win screen.
+          Restart();
+        }
+      }
   
   //Now, here I have to make like a hitbox for hero, so it can get hit from the obstacles.
   void HitBox(){
@@ -187,7 +201,9 @@ void draw(){
         
         if(HSX && HSY){
         obstacles[i].reset(); // It disappears when blocked by a shield. Like go up techinically.
-        handled = true; // and then, this obstacle has been handled.
+        score = score + 1; // Now, it gets the schore by 1.
+        println("Score:" + score); // Print score everytime you defense the obstacles.
+        handled = true; // And then, this obstacle has been handled.
       }
     }
 
@@ -200,7 +216,9 @@ void draw(){
 
       if (HAX && HAY) { // The same logic with hero2.
         obstacles[i].reset();
-        handled = true;
+        score = score + 1; // Now, it gets the score by 1 as well.
+        println("Score:" + score); // Print score everytime you defense the obstacles.
+        handled = true; // The same logic with hero2.
       }
     }
 
@@ -226,5 +244,29 @@ void draw(){
         // hero2 and hero3. So, I am bout to change the whole thing in the HitBox function.
       }
     }
+  }
+}
+
+void Restart(){
+  button1 = false; // From here to verybottom, in order to restart the game, I made the function called Restart and it changes all of the variables as a initial value, so the game can be restarted.
+  hero2Time = 0;
+  button2 = false;
+  hero3Time = 0;
+  dCooldown = 0;
+  aCooldown = 0;
+  
+  hp = 3;
+  score = 0;
+  
+  LostGame = false;
+  WonGame = false;
+  
+  hero1 = new Hero1(width/2, 648); // Make hero be placed at the center again.
+  hero2 = new Hero2();
+  hero3 = new Hero3();
+  
+  for(int i = 0; i < count; i++){ // Make the obstacles run randomly again.
+    obstacles[i].update();
+    obstacles[i].display();
   }
 }
